@@ -10,20 +10,20 @@ const tutorialData = [
     {
         title: "Dedica moltes hores",
         description: "In mínim de 30 hores a la semana. Si no en tens prou, hauràs de dedicar-li mès hores. Al principi sembla impossible, però notaràs una millora ràpidament.",
-        bgColor: "color",
-        image: meditation
+        bgColor: "#4DA2A9",
+        image: managment         
     },
     {
         title: "Programa projectes propis",
         description: "Mes val 10 hores treballant en projectes propis, que 10 hores mirant tutorials. La motivació i la implicació en el projecte ajudarà a accelerar el teu aprenentatge.",
-        bgColor: "color",
+        bgColor: "#D3D4D9",
         image: programming
     },
     {
         title: "Procura descansar",
         description: "Descansar bé i desconnectar són vitals. D´aquesta manera reduiràs l`estrès i l´ansietat. Milloraràs la teva concentració i consolidaràs el teu aprenentatge.",
-        bgColor: "color",
-        image: managment
+        bgColor: "#FFD167",
+        image: meditation
     },
 ]
 
@@ -43,44 +43,24 @@ export function App() {
     
       let currentCardData = tutorialData[step]
 
-    {/* Ejercicio 2
-Por ahora, tu aplicación puede mostrar sólo una frase. En este ejercicio haremos que pueda mostrar todas las frases de onBoarding. 
-
-En este ejercicio haremos que se vayan mostrando los distintos pasos al usuario/a.
-
-Para llevar a cabo esta función debes seguir las siguientes tareas:
-
-1. Implementar una función nextStep en App.js, que vaya incrementando el valor del estado step en una unidad.
-
-2. Pasa por props al componente Card, la función nextStep y llámala desde el JSX del componente Card. De este modo, cuando el usuario haga clic en el botón en el componente Card, se ejecutará la función nextStep, que al modificar el valor del estado "step", 
-
-3. Verás que pasa el siguiente objeto del array tutorialData en el componente Card.*/}
-
     return (
         <>
-
-
             {
-                <div>
+                <div className="App d-flex align-items-center">
                     <Card 
+                    bgColor={currentCardData.bgColor}
+                    image={currentCardData.image} 
                     title={currentCardData.title} 
                     description={currentCardData.description} 
-                    nextStep={nextStep}    
+                    nextStep={nextStep}  
+                      
+                    
                     />
                 </div>
+                
             }
-
-            {/* <div>
-                {
-                    tutorialData.map(card => (
-                        <div key={card.title}>
-                            <Card title={card.title} description={card.description} bgColor={card.bgColor} image={card.image} />
-                        </div>
-                    ))
-                }
-
-            </div> */}
-            <h1 className="text-end me-5">{step}</h1>
+          
+            <h1 className="text-end me-5">{step}</h1> 
 
         </>
     )
