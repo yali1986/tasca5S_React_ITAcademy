@@ -29,28 +29,46 @@ const tutorialData = [
 
 export function App() {
 
-    const [step, setStep] = useState(0) 
+    const [step, setStep] = useState(0)
+   
+
+    const nextStep = () => {
+        setStep((prevStep) => (prevStep + 1) % tutorialData.length)        
+
+// setStep: función proporcionada por React a través del hook useState para actualizar el valor del estado step.
+// (prevStep) => ...: función de actualización que toma el valor previo del estado (prevStep) como argumento. 
+
+// % tutorialData.length: El operador módulo (%) asegura que el valor de step se mantenga dentro del rango válido de índices del array tutorialData. Esto crea un ciclo. Si tutorialData.length es 3 (porque tienes tres elementos en el array) y prevStep se incrementa a 3, 3 % 3 será 0. Esto hace que step vuelva al primer elemento del array después de alcanzar el último.
+    }
     
-  
-    let currentCardData = tutorialData[ step ]
+      let currentCardData = tutorialData[step]
 
-    {/*3. En el componente App, define el array tutorialData, que contiene la información de cada paso que se mostrará al usuario.
+    {/* Ejercicio 2
+Por ahora, tu aplicación puede mostrar sólo una frase. En este ejercicio haremos que pueda mostrar todas las frases de onBoarding. 
 
-4. Crea el primer estado mediante el hook useState, para llevar la cuenta del paso en el que nos encontramos.
+En este ejercicio haremos que se vayan mostrando los distintos pasos al usuario/a.
 
-5. Pasa mediante cerca los datos del primer paso al componente Card.
+Para llevar a cabo esta función debes seguir las siguientes tareas:
 
-6. Utiliza en Card.js los datos proporcionados por props para mostrar al usuario el título y la descripción del primer paso. */}
+1. Implementar una función nextStep en App.js, que vaya incrementando el valor del estado step en una unidad.
+
+2. Pasa por props al componente Card, la función nextStep y llámala desde el JSX del componente Card. De este modo, cuando el usuario haga clic en el botón en el componente Card, se ejecutará la función nextStep, que al modificar el valor del estado "step", 
+
+3. Verás que pasa el siguiente objeto del array tutorialData en el componente Card.*/}
 
     return (
         <>
 
 
-        {
-            <div>
-            <Card title={tutorialData[0].title} description={tutorialData[0].description} />
-            </div>
-        }
+            {
+                <div>
+                    <Card 
+                    title={currentCardData.title} 
+                    description={currentCardData.description} 
+                    nextStep={nextStep}    
+                    />
+                </div>
+            }
 
             {/* <div>
                 {
@@ -62,12 +80,9 @@ export function App() {
                 }
 
             </div> */}
-
-            <h1>{step}</h1>
-
-            {/* <button onClick={() => setStep(step + 1)}>Next</button>
-            <button onClick={() => setStep(step - 1)}>Previous</button> */}
+            <h1 className="text-end me-5">{step}</h1>
 
         </>
     )
+
 }
