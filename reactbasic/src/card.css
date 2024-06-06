@@ -8,25 +8,12 @@
     border-top-right-radius: 20px !important;
 }
 
-.img-fluid{
-    height: 50vh;
-}
-
-@media (max-width: 578px) {
+@media (min-width: 425px) {
     .img-fluid{
-        height: 30vh;
+        height: 35vh;
     }
-}
-
-@media (min-width: 768px) {
-    .img-fluid{
-        height: 40vh;
-    }
-}
-
-@media (min-width: 1080px) {
-    .img-fluid{
-        height: 60vh;
+    .card{
+        width: 20rem;
     }
 }
 
