@@ -3,7 +3,7 @@ import "../card.css"
 export default function Card({ title, description, bgColor, image, nextStep }) {
     return (
         <>
-            <div className="card text-center col-4 mx-auto shadow">
+            <div className="card text-center col-10 col-md-6 col-lg-4 mx-auto shadow">
 
                 <div className="card-body text-start p-0 ">
                     <div style={{ backgroundColor: bgColor }} className="rounded-top">
