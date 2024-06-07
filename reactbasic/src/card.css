@@ -1,6 +1,14 @@
 .card {
     border: none !important;
     border-radius: 20px !important;    
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.card-text-title{
+    height: 15rem;
 }
 
 .rounded-top{
@@ -8,17 +16,30 @@
     border-top-right-radius: 20px !important;
 }
 
+.img-container {
+    height: 50vh;     
+}
+
+.img-fluid {
+    width: 100%;
+    height: 100%;
+    scale: 0.7;
+}
+
 @media (min-width: 425px) {
     .img-fluid{
-        height: 35vh;
+        height: 50vh;
+       
     }
     .card{
         width: 20rem;
     }
 }
 
-.btn-dark, .btn{
-    height: 4rem !important;
-    width: 4rem;
-    border-radius: 2rem !important;    
+.btn-dark, .btn, .btn-white, .btn-white:hover {
+    height: 3rem !important;
+    width: 3rem;
+    border-radius: 1.5rem !important;  
+    border: 1px solid black;  
 }
+

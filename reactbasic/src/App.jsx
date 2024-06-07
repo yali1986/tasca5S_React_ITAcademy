@@ -33,12 +33,16 @@ export function App() {
    
 
     const nextStep = () => {
-        setStep((prevStep) => (prevStep + 1) % tutorialData.length)        
+        setStep((step) => (step + 1) % tutorialData.length)        
 
 // setStep: función proporcionada por React a través del hook useState para actualizar el valor del estado step.
-// (prevStep) => ...: función de actualización que toma el valor previo del estado (prevStep) como argumento. 
+// % tutorialData.length: El operador módulo (%) asegura que el valor de step se mantenga dentro del rango válido de índices del array tutorialData. 
+//Esto crea un ciclo. Si tutorialData.length es 3 (porque tienes tres elementos en el array) y prevStep se incrementa a 3, entonces 3 % 3 será 0. 
+//Esto hace que step vuelva al primer elemento del array después de alcanzar el último.
+    }
 
-// % tutorialData.length: El operador módulo (%) asegura que el valor de step se mantenga dentro del rango válido de índices del array tutorialData. Esto crea un ciclo. Si tutorialData.length es 3 (porque tienes tres elementos en el array) y prevStep se incrementa a 3, 3 % 3 será 0. Esto hace que step vuelva al primer elemento del array después de alcanzar el último.
+    const prevStep = () => {
+        setStep((step) => (step - 1) % tutorialData.length)
     }
     
       let currentCardData = tutorialData[step]
@@ -53,7 +57,8 @@ export function App() {
                     title={currentCardData.title} 
                     description={currentCardData.description} 
                     nextStep={nextStep}  
-                      
+                    prevStep={prevStep}  
+                    step={step}                   
                     
                     />
                 </div>
