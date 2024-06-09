@@ -1,6 +1,7 @@
 import "../card.css"
 import "./Indicator.jsx"
-import { ReactNode } from "react"
+import { ReactNode, useState } from "react"
+
 
 
 export default function Card({ 
@@ -12,16 +13,36 @@ export default function Card({
     prevStep, 
     step,  
     children }) {
-         
+      
+        
+   const [animation, setAnimation] = useState("")
+
+   const handleNext = () => {
+    setAnimation("animate__fadeOutLeft")
+    setTimeout(() => {
+        nextStep()
+        setAnimation("animate__fadeInRight")
+    }, 500)
+   }
+
+   const handlePrev = () => {
+    setAnimation("animate__fadeOutRight")
+    setTimeout(() => {
+        prevStep()
+        setAnimation("animate__fadeInLeft")
+    }, 500)
+   }
+   
      return (
         <>
 
             <div className="card text-center col-10 col-sm-6 mx-auto shadow">
-
+            <div className='animate__animated animate__backInRight'>
                 <div className="card-body p-0">
+                
                     <div>
                         <div style={{ backgroundColor: bgColor }} className="rounded-top">
-                            <div className="img-container">
+                        <div className={`img-container animate__animated ${animation}`}>
                                 <img src={image} alt="imagen" className="img-fluid " />
                             </div>
                         </div>
@@ -42,12 +63,12 @@ export default function Card({
                                     <div className="d-flex flex-row justify-content-end mt-4">
 
                                         {step > 0 && step <= 2 && (
-                                            <button onClick={prevStep} className="btn btn-white m-4 mb-5">
+                                            <button onClick={handlePrev} className="btn btn-white m-4 mb-5">
                                                 ←
                                             </button>
                                         )}
                                         {step !== 2 && (
-                                            <button onClick={nextStep} className="btn btn-dark m-4 mb-5">
+                                            <button onClick={handleNext} className="btn btn-dark m-4 mb-5">
                                                 →
                                             </button>
                                         )}
@@ -61,7 +82,7 @@ export default function Card({
                     </div>
                 </div>
             </div>
-
+</div>
         </>
 
     )

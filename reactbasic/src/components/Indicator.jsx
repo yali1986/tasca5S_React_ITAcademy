@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { useEffect, useState } from "react"
+
 
 const IndicatorWrapper = styled.div`
   display: flex;
@@ -20,18 +22,21 @@ const Dot = styled.span`
 `;
 
 export default function Indicator({ step, tutorialData, onStepClick }) {
- 
+  const [animateStep, setAnimateStep] = useState(step)
+  
+useEffect(() => {
+  setAnimateStep(step)
+}, [step])
+
     return (
         <IndicatorWrapper>
         {Array.from({ length: tutorialData }).map((_, index) => (
-          <Dot key={index} className={index === step ? 'active' : ''} 
+          <Dot key={index} className={`${index === step ? "active animate__animated animate__bounce" : ""}`} 
             onClick={() => onStepClick(index)}
           />
         ))}
       </IndicatorWrapper>
       
       )
-
-// Amb les dades proporcionades per les propietats, pinta dinàmicament el número de boletes utilitzant un .map.
-// Destaca la boleta on ens trobem fent servir styled components.  
+  
 }
