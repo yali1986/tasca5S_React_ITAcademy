@@ -38,8 +38,13 @@
 
 .btn-dark, .btn, .btn-white, .btn-white:hover {
     height: 3rem !important;
-    width: 3rem;
+    width: 3rem !important;
     border-radius: 1.5rem !important;  
     border: 1px solid black;  
+    font-size: x-large;  
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
 }
 

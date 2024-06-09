@@ -4,7 +4,9 @@ import meditation from "./assets/meditation.svg"
 import programming from "./assets/programming.svg"
 import managment from "./assets/time_managment.svg"
 
-import Card from "./components/Card.jsx"
+
+import Card from "./components/Card"
+import Indicator from "./components/Indicator"
 
 const tutorialData = [
     {
@@ -45,6 +47,10 @@ export function App() {
         setStep((step) => (step - 1) % tutorialData.length)
     }
     
+    const handleStepClick = (index) => {
+        setStep(index);
+      }
+
       let currentCardData = tutorialData[step]
 
     return (
@@ -58,14 +64,20 @@ export function App() {
                     description={currentCardData.description} 
                     nextStep={nextStep}  
                     prevStep={prevStep}  
-                    step={step}                   
+                    step={step}>  
+
+                     <Indicator 
+                    step={step}  
+                    tutorialData={tutorialData.length}  
+                    onStepClick={handleStepClick}
+                     />                   
                     
-                    />
+                    </Card> 
+                   
                 </div>
                 
-            }
+            }      
           
-            <h1 className="text-end me-5">{step}</h1> 
 
         </>
     )
