@@ -7,6 +7,7 @@ const IndicatorWrapper = styled.div`
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1rem;
+  position: 
 `;
 
 const Dot = styled.span`
@@ -15,6 +16,7 @@ const Dot = styled.span`
   background-color: grey;
   border-radius: 50%;
   transition: background-color 0.3s;
+
 
   &.active {
     background-color: black;

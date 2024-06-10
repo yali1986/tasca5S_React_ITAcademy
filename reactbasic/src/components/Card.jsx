@@ -56,12 +56,17 @@ export default function Card({
 
                             <div className="row">
 
-                                <h1 className="col">{children}</h1>
+                               
 
-                                <div className="col">
+                                <div className="col align-items-center">
 
-                                    <div className="d-flex flex-row justify-content-end mt-4">
+                                    <div className="d-flex flex-row justify-content-between mt-4 align-items-center">
 
+                                    <div>
+                                    <div className="col ms-4">{children}</div>
+                                    </div>
+
+                                    <div className="row d-flex mt-4 me-2">
                                         {step > 0 && step <= 2 && (
                                             <button onClick={handlePrev} className="btn btn-white m-4 mb-5">
                                                 ←
@@ -72,7 +77,7 @@ export default function Card({
                                                 →
                                             </button>
                                         )}
-
+</div>
                                     </div>
                                 </div>
                             </div>
